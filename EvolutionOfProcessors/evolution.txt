@@ -1,0 +1,42 @@
+(x86 Processors & Computer Architecture)
+
+
+(MMX) ->MultiMedia eXtension
+(SSE) ->Streaming SIMD Extensions
+(AVX) ->Advanced Vector Extensions
+
+
+MMX -> Supports single instruction and multiple data operation or D operations for packed integers using 64-bit wide registers.
+
+SSE -> SSE added eight 128 bit wide registers to the x86 32 bit platform and instructions that support packed single precision
+floating point(32-bit floating point) arithmetic.
+
+SSE2 ->This new Microarchitecture included SSE two, which extended the floating point capabilities of SSE to cover packed 
+double precision(64-bit floating point) values.
+
+2004 -> SSE was upgraded to SSE3 and Hyper-threading technology
+
+AVX ->Adds packed floating point operations, both single and double precision using 256-Bit wide registers.
+
+AVX2 ->This microarchitecture extends AVX to support packed integer operations using its 256-Bit wide registers.(FMA operations)
+
+FMA enables software to perform successive product sum calculations using a single floating point rounding operation.
+
+Processors                  Year                   Architecture
+
+Intel 80386                 1985                   16-Bit,32-Bit  (flat memory,paged memory,32-bit registers)
+
+Intel P5 (Pentium 5)        1993                   16-Bit,32-Bit,MMX (64-bit external data bus)
+
+Intel p6 (Pentium Pro)      1997                   16-Bit,32-Bit,SSE (Can execute 3 instructions per one cpu cycle)
+
+Intel Netburst (Pentium 4)  2000                   16-Bit,32-Bit,SSE2
+
+Intel cover                 2006                   16-Bit,32-Bit,64-Bit,SS4.1 (This was done after amd invented 64-bit processor)
+
+Intel Nehalem (Core i7)     2008                   16-Bit,32-bit,64-bit,SS4.2
+
+Intel Sandy Bridge-E        2011                   16-Bit,32-Bit,64-Bit,AVX (ADVANCED VECTOR EXTENSIONS)
+
+Intel Haswell               2013                   16-Bit,32-Bit,64-Bit,AVX2
+

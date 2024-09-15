@@ -1,0 +1,8 @@
+.386 ;It is a directive, which tells that minimum processor required to run the project is 80386 and any versions after 80386.
+
+.model flat ;It is a directive, which tells that i want to use flat memory segmentation.
+
+.code ;It is a directive used to specify the code area. where my code exist.
+
+.data ;It is a directive used to specify the data. where my data exist.
+

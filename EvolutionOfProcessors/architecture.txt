@@ -1,0 +1,16 @@
+###(Von Neumann ARCHITECTURE)
+
+1. He said a computer consists of memory, an arithmetic logic unit, a control unit and input output devices.
+
+2. All parts of the computer are connected together by a bus.
+
+3. The computer structure is independent of the computed problem and the computer is programmed with content of memory.
+
+
+In modern computers we are able to integrate the control unit and the arithmetic logic unit into a single integrated circuit
+called cpu.  
+
+
+###(HARVARD ARCHITECTURE)
+
+1. It seperated memory for data and memory for instructions.

@@ -1,0 +1,15 @@
+###(AND GATE)
+
+x && y ->It will only true when both operands are true.
+
+###(OR GATE)
+ 
+x + y ->It will be evaluated as true when one of the operand is true.
+
+###(NOT GATE (OR) INVERTER)
+
+!x ->It takes a single input and inverts it.
+
+###(EXCLUSIVE OR GATE)
+
+x ^ y ->It will be true when both the operands are different.
