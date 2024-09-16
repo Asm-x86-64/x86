@@ -1,0 +1,6 @@
+###(x86 Data Type)
+
+1.byte -> 8-Bits
+2.word -> 16-Bits
+3.doubleword -> 32-Bits
+4.quadword -> 64-bits

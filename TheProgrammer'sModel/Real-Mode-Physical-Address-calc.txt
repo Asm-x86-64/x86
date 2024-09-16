@@ -1,0 +1,37 @@
+### (Understanding Segment Registers and Address Calculation):
+
+1. *Segment Register Size*:
+   - In the 8086 processor, segment registers are 16-bit (2 bytes), which means they can hold values from 0x0000 to 0xFFFF. 
+   - This effectively means that each segment register can address up to 64 KB blocks of memory.
+
+2. *Segment Calculation*:
+   - The value stored in a segment register is a 16-bit value, and this value represents the base address of a segment in real mode.
+   - To obtain the actual starting address of the segment, you multiply the segment register value by 16 (or shift left by 4 bits). This step gives you the base address of the segment in the 1 MB address space.
+
+### (Example Calculation):
+
+Given:
+- *Segment Register Value*: 0x8000 (because the actual segment 0x80000 is stored as 0x8000 in a 16-bit segment register).
+
+To calculate the physical address:
+
+1. *Shift the Segment Register Value*:
+   - Segment base address: 0x8000 (value stored in the segment register).
+   - Shift left by 4 bits (multiply by 16):  
+     
+        Segment Base Address = 0x8000 * 16 = 0x80000 (or) 0x8000 >> 4 = 0x80000
+     
+
+2. *Add the Offset*:
+   - *Offset*: Let's assume it’s 0x0256 (an example offset within the segment).
+   - Add the offset to the segment base address:
+    
+        Physical Address = 0x80000 + 0x0256 = 0x80256
+    
+
+### (Summary):
+- *Segment Register Value*: Represents a segment of memory in 16-bit format.
+- *Base Address Calculation*: Shifting left by 4 bits (or multiplying by 16) transforms the 16-bit segment register value into a 20-bit base address.
+- *Final Physical Address*: Adding the 16-bit offset to this base address yields the final physical memory address.
+
+Your understanding is correct: the segment register value is effectively 16-bit, and shifting it left by 4 bits gives you the actual starting address of the 64 KB segment in the 1 MB address space. The offset is then added to this base address to calculate the final physical address.

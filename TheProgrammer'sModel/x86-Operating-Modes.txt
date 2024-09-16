@@ -1,0 +1,42 @@
+###(x86 Operating Modes)
+
+The x86 processor has three prmiary operating modes:-
+
+1.Protected Mode (Virtual - 8086 Mode)
+2.Real Address Mode
+3.System Management Mode
+
+Protected Mode has a sub mode called virtual - 8086 Mode.
+
+
+##(Protected Mode)
+
+1. Native state of processor.
+2. All instruction features are available.
+3. Includes virtual-8086 sub-mode.
+4. Programs are given seperate memory areas called segments
+5. Processor prevents program from referencing outside their segment.
+
+While in Protected mode, the processor can directly execute real address mode software such as Ms Dos programs in a safe,
+multitasking environment. 
+
+##(Virtual 8086 Mode)(Sub mode)
+
+1.Allows processor to directly execute real-address mode software while in Protected mode.
+
+##(Real-Address Mode)
+
+1.Implements 8086 programming environment.
+
+2.Capable of switching into other modes.
+
+This mode can be used to run an Ms Dos program that requires direct access to the system memory and hardware devices.
+Programs running in the real address mode can cause the operating system to crash.
+
+##(System Management Mode)
+
+1. Provide Os with System management mechanisms
+
+The system management mode is also known as SM, and it provides a operating system with a mechanism for implementing functions
+such as power management and system security.These functions are usually implemented by computer manufacturers who customize
+the processor for a particular system setup.

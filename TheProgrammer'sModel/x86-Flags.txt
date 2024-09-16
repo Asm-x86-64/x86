@@ -1,0 +1,38 @@
+###(x86 Flags)
+
+A flag has two states:-
+
+    1.Set (1)
+    2.Reset/Clear (0)
+
+There are two groups of flags in x86:-
+    
+    1.Control Flags
+    2.Status Flags
+
+##(Control Flags)
+
+1.The control flags control the CPU operation, for example they can cause the CPU to break after every instruction executes.
+
+2.They can also cause the CPU to interrupt when a arithmetic overflow is detected or make the CPU enter (virtual 86 mode) or
+even (protected mode).
+
+3.The programs can set individual bits in the flags register to control the CPU's operation Examples are the direction
+and interrupt flags.
+
+##(Status Flags)
+
+1.The Status flags reflect the outcomes of arithmetic and logical operations performed by the CPU.They are the overflow 
+design, the zero, the carry and the parity flags.
+
+2.OVERFLOW FLAG (OF) :-> Set when the result of an signed arithmetic operations is too large to fit into the destination.
+
+3.SIGN FLAG (SF) :-> Set when the result of an arithmetic or logical operations is negative
+
+4.ZERO FLAG (ZF) :-> Set when the result of an arithmetic or logical operation is zero.
+
+5.CARRY FLAG (CF) :-> Set when the result of an unsigned arithmetic operation is too large to fit into the destination.
+
+6.PARITY FLAG (PF) :-> Set if the least-significant byte in the result contains even number of 1 bits.
+
+7.Auxiliary CARRY (AC) :-> Set when an arithmetic operation cause a carry form bit 3 bit 4 in an 8-bit operand.

@@ -1,0 +1,86 @@
+refer:- img/x86-MicroArchitecture-Design.jpg
+
+The central processing unit where calculations and logic opeartions take place, and it contains a limited number of storage
+locations called registers. It also has a high frequency clock, a control unit and an arithmetic logic unit.
+
+1.The clock synchronizes the internal operations of the CPU with other system components.
+
+2.The control unit coordinates the sequencing of steps involved in executing machine instructions.
+
+3.The Arithmetic logic unit or the ALU for short performs arithmetic operations such as addition and subtraction,as
+well as logical operations such as Boolean and boolean or etc.
+
+4.The CPU is attached to the rest of the computer through pins attached to the CPU socket in the computer's motherboard.
+
+5.Most pins connect to the data bus, the control bus and the address bus.
+
+6.The memory storage unit is where the instructions and data are held. While a computer program is running, the storage
+unit receives requests from the CPU transfers, data from the Ram to the CPU and transfers data from the CPU into memory
+or processing of data takes place within the CPU. So programs residing in memory must be copied into the CPU before they
+can execute.
+
+7.Individual program instructions can be copied into the CPU one at a time, or groups of instructions can be copied together.
+
+8.A bus is simply group of parallel wires that transfer data from one part of the computer to another.
+
+9.A computer system usually contains four bus types.
+    1.Data Bus
+    2.I\O Bus
+    3.Control Bus
+    4.Address Bus
+
+10.The Data Bus transfers, instructions and data between the CPU and memory.
+
+11.The I\O Bus transfers data between the CPU and the system Input Output devices.
+
+12.The Control Bus uses binary signals to synchronize actions of all devices attached to the system bus.
+
+13.The address Bus holds the addresses of instructions and data when the currently executing instruction transfers
+data between the CPU and memory.
+
+14.The execution of single machine instruction can be divided into a sequence of individual operations called the 
+instruction execution cycle.
+
+15.Before execution, a program is loaded into memory, the instruction pointer contains the address of the next instruction.
+
+16.The instruction queue holds a group of instructions about to be executed.
+
+17.Executing a machine instruction requires three basic steps
+    1.Fetch
+    2.Decode
+    3.execute
+
+18.Two more steps are required when the instruction uses a memory operand.
+    1.fetch operand
+    2.store output operand
+
+***(The instruction pointer is also known as program counter)
+
+19.Fetch :-> The control unit fetches the next instruction form the instruction queue and increment the instruction pointer.
+
+20.Decode :-> The control unit decodes the instruction function to determine what the instruction will do.The instructions
+input operands are passed to the ALU and signals are sent to the ALu indicating the operation to be performed.
+
+21.Fetch operand :-> If the instruction uses an input operand located in memory, the control unit uses a read operation to
+retrieve the operand and copy it into internal registers.
+
+22.At the execute stage, the ALU executes the instruction using the named registers and internal registers as operands
+and sends the output to the name registers or memory, or send the output to both the named registers and memory.
+
+23.The ALU updates the status flag providing information about the processor state.
+
+24.Store output operand :-> If the output operand is in memory, the control unit uses write opeartion to store the data.
+
+###(x86 Architecture Data Flow)
+
+1. In order to read program instructions from memory, an address is placed on the address bus.
+
+2.Next the memory controller places the requested code on the data bus, making the code available inside the code cache
+
+3.The instruction pointer(program counter) value determines which instruction will be executed next.
+
+4.The instruction is analyzed by the instruction decoder, causing the appropriate digital signals to be sent to the
+control unit, which coordinates the Arithmetic logic unit and the floating point unit.
+
+5.Although the control bus is not shown in the diagram, it carries signals that use the system clock to coordinate the 
+transfer of data between different CPU components

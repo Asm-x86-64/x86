@@ -1,0 +1,106 @@
+###(MMX Registers)
+
+1.MMX technology was added onto the pentium processor by intel to improve the performance of advanced multimedia 
+and communications applications.
+
+2.(8 -> 64-Bit registers) they support special instructions called SIMDI (Single Instruction Multiple Data)
+
+###(XMM Registers)
+
+1.The x86 architecture also contains eight 128-Bit registers called XMM registers.
+
+2.These are used by streaming SIMD extensions to the Instruction set.
+
+
+###(x86 Floating Point Unit)
+
+refer:->img/x86-FPU.jpeg
+
+1.The floating point performs high speed floating point arithmetic. At one time, a seperate co-processor chip was
+required for this from the intel 486 onward.The FPU (Floating Point Unit) has been integrated into the main processor chip.
+
+2.There are eight floating point data registers in the FPU:-
+    
+        (80-Bit Data Registers)
+
+            1.ST [0]
+            2.ST [1]
+            3.ST [2]
+            4.ST [3]
+            5.ST [4]
+            6.ST [5]
+            7.ST [6]
+            8.ST [7]
+
+            OP Code Register
+
+3.There are two pointer registers:-
+
+        (48-Bit Registers)
+
+            1.FPU Instruction Pointer
+            2.FPU Data Pointer
+
+4.There are three Control registers:-
+
+        (16-Bit Control Registers)
+
+            1.Tag Register
+            2.Control Register
+            3.Status Register
+
+5.The floating units are some times called x87 architecture.
+
+6.The FPU eight data registers are organized as a stack or arithmetic instructions are executed using either implicit
+or explicit operands relative to the top of the stack.
+
+7.Data transfers between the floating point register and the (x86 32-Bit) general purpose register are not possible
+and an intermediate memory location must be used.
+
+8.So internally, the x87 Floating Point maintains numerical values using an 80-Bit double extended precision format
+conversion between this internal format and or the supported integer floating point and BCD format occur automatically during 
+the FPU register load and store operations.(refer:->chatGPT)
+
+9.The FPU contains several special purpose registers, as i mentioned earlier, and these are used to configure the FPU,
+determine its status and facilitate exception processing.
+
+10.The FPU control register allows a task to enable or disable various Floating point processing options.including exceptions,
+rounding method and precision level.
+
+11.Unlike most other x86 control registers, modification of the FPU control register does not require elevated runtime
+privileges.
+
+12.Application program can configure the FPU based on an algorithms specific processing requirement,setting an exception
+mask bit to one in the FPU control register disables only the generation of a processor exception.
+
+13.The FPU status register always records the occurance of any exception condition.
+
+14.Application programs cannot directly access the internal processor table that specifies the FPU exception handler.
+
+15.Most C and C++ compilers, however, provide a library function that allows application programs to designate a callback
+function function that gets invoked whenever FPU exception occus.
+
+16.The FPU status register contains a 16-Bit value that allows a task to determine the result of an arithmetic operation.
+
+17.Check if an exception has occured and query stack status information.
+
+18.The FPU Instruction set supports three types of memory operands:-
+
+    1.Signed integer
+    2.Floating point
+    3.Packed BCD
+
+19.Usable signed integer operands include the 16-Bit word, the 32-Bit double word, the 64-bit quad word.
+(refer:->img/x86-memory-operands.jpg)
+
+20.Supported floating point operands includes the 32-Bit single precision, the 64-Bit double precision and the 80-Bit double 
+extended precision.
+
+21.Many C and C++ compilers use the single precision and double precision operand types to implement.float and double values
+respectively.
+
+22.The x87 floating point unit encodes floating point values using three distinct fields.
+
+    1.Sign Bit
+    2.Exponent
+    3.Mantissa (Significant)

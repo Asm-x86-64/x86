@@ -1,0 +1,57 @@
+###(x86 Memory Models)
+
+x86 processors manage memory according to the basic operating modes.
+
+
+##(Real address Mode)
+
+refer:-> Real-Mode-Physical-Address-calc.txt
+refer:->img/Real-Mode-Addressing.jpg
+refer:->img/Physical-Address.jpg
+
+1.Only 1MB of memory can be addressed.
+
+2.From 0x00000 to 0xFFFFF
+
+3.Processor can run only one program at a time.
+
+4.Application programs can access any memory location.
+
+5.An x86 processor can accessible one megabyte of memory using 20 bit addressing in the range of #00000 to #FFFFF.
+
+6.Intel engineers had to solve a basic problem. The 16-Bit registers in the intel 8086 processor could not hold 20 bit
+addresses, so they cam up with a scheme known as segmented memory.
+
+7.All of memory is divided into 64KB units called segments.
+
+#(Byte Addressable Memory) -> Each byte location (8-Bit) has a seperate address. 
+
+1.An address refers to a single location in memory and x86 processors permit each byte location to have a seperate address.
+
+2.In real address mode the linear address is 20 bits ranging from #00000 to #FFFFF programs can use linear address directly 
+
+
+##(Protected Mode)
+
+1.Processor can run multiple programs at a time.
+
+2.Each running program is assigned 4GB of virtual memory.
+
+3.Programs cannot access each other's code and data (Because of paging).
+
+4.In protected mode a program's linear address space is 4GB from (#00000000) to (#FFFFFFFF).
+
+5.In the context of assembler, the flat segmentation model is appropriate for protected mode programming.
+
+6.The flat model is easy to use because it requires a single 32-Bit integer to hold the address of an instruction or variable.
+
+7.The CPU performs address calculation and translations in the background, all of which are transparent to the Application programs.
+
+8.Segment registers, CS,SS,FS and GS as we saw earlier, point to the segment descriptor tables which the operating system
+uses to keep track of locations of individual program's segments.
+
+##(virtual-8086 Mode)
+
+1.The computer runs in protected mode and creates a virtual 8086 machine with its own 1MB address space.
+
+2.That simulates a 8086 computer running in real address mode.

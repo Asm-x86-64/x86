@@ -1,0 +1,128 @@
+###(8086(16-Bit) Registers)
+
+1. All the registers in 8086 are 16-Bit
+
+2. They are splitted into four categories:-
+
+   1.General purpose register
+   2.Index register
+   3.Status and Control register
+   4.Segment register
+
+##(General purpose registers )
+
+refer:->img/8086-general-register.jpg
+
+        (HIGH)    (LOW)
+1.AX -> AH        AL (Used as an accumulator and preferred for most operations)
+2.Bx -> BH        BL (Base register, typically used to hold the address of a procedure or variable)
+3.CX -> CH        CL (Uesd as a count register, typically used for looping)
+4.DX -> DH        DL (Used as a data register, typically used for multiplication and division)
+
+##(Index registers)
+
+The index registers contain offset from a segment register for information we are interested in.
+
+1.SI :->(Source index register and is used in copying strings)
+2.DI :->(Destination index and is also used in copying strings)
+3.BP :->(Base pointer register and is the offset from the SS register to locate variables on the stack)
+4.SP :->(Stack pointer register and this is an offset from the SS register to the location of the stack's top)
+
+##(Instruction Pointer)
+
+1.IP :->(The instruction pointer register basically points to the next instruction to be executed)
+
+
+##(Segment registers)
+
+The CPU contains four segment registers used as base location for program instructions, data or the stack.
+
+1.CS :->(Code segment register and it is the base location of program code)
+2.DS :->(Data segment register is the base location for variables)
+3.ES :->(Extra segment register and this is the additional base location for variables)
+4.SS :->(Stack segment register is the base location for Stack)
+
+##(Flag register)
+
+1.Flags :-> (The flags contains the status flags of the processor)
+
+-----------------------------------------------------------------------------------------------------------------------
+
+
+###(x86 Registers)
+
+refer:->img/x86-registers.png
+
+conventional memory :->Real mode addresing 1MB is limited. In that 1MB, 640KB at (#00000000)bottom is conventional memory
+reserved for use by DOS and its programs. the remaining 384KB is Upper memory access reserved for BIOS and peripheral drivers.
+
+1. A register is a storage inside the processor core.
+
+2. Can be accessed at much high speeds than conventional memory.
+
+
+##(80386 (32-Bit)) or (x86 32-Bit)
+
+refer:->img/80386-registers.gif
+
+The general purpose registers are 32-Bit long and there are:-
+      8 :-> general purpose registers
+      6 :-> segment registers
+      1 :-> instruction pointer register
+      1 :-> status flag register
+
+#(General purpose registers) (32-Bit)
+
+   1.EAX 
+   2.EBX 
+   3.ECX 
+   4.EDX 
+   5.EBP 
+   6.ESP 
+   7.ESI 
+   8.EDI 
+
+#(Segment registers) (16-Bit)
+
+   1.CS
+   2.SS
+   3.DS
+   4.ES
+   5.FS
+   6.GS
+
+FS AND GS are Data segment registers.
+
+#(Status and Instruction register) (32-Bit)
+
+   1.EFLAGS
+   2.EIP
+
+
+##(x86 64-Bit)
+
+The x86 64-Bit or x64 has 16 general purpose registers.
+
+#(General purpose register) (64-Bit)
+
+   01.RAX
+   02.RBX
+   03.RCX
+   04.RDX
+   05.RBP
+   06.RSP
+   07.RSI
+   08.RDI
+   09.R8
+   10.R9
+   11.R10
+   12.R11
+   13.R12
+   14.R13
+   15.R14
+   16.R15
+
+#(Status and Instruction register) (64-Bit)
+
+   1.RFLAGS
+   2.RIP
