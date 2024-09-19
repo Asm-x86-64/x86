@@ -1,0 +1,155 @@
+###(Directives and Instructions)
+
+##(Directives)
+
+1.Directives are not Instructions
+
+2.They are not part of instructions set they simply assist and control the assembly process.
+
+3.They are also known as pseudo-ops.
+
+4.They change the way code is assembled.
+
+Example:-
+
+.CODE -> Indicates the start of code segment
+
+.DATA -> Indicates the start of a data segment.
+
+.STACK -> Indicates the start of a stack segment.
+
+.END -> Marks the end of a module.
+
+.DD -> Allocate a double word (4 bytes) storage.
+
+.DWORD -> Allocate a double word (4 bytes) storage.
+
+##(Instructions)
+
+1.A statement that becomes executable when a program is assembled.
+
+2.Are translated by assembler into machine language bytes
+
+Syntax:-> [label :] mnemonic [operands] [;comment]
+
+3.An instruction contains the above four basic parts.
+
+4.[label :] is optional, mnemonic is always required. The operand is often required but there are some instructions
+where just a mnemonic works, [;comment] is optional.
+
+Example:-
+
+start: MOV EAX, 10000h ;EAX = 10000h
+
+[start:] -> [label:]
+mnemonic -> MOV
+operands -> EAX and 10000h
+[;comment] ->;EAX = 10000h
+
+5.Label : Used as a place marker for instructions and data.
+
+6.A Label placed just before an instruction implies the instructions address.
+
+7.A label placed just before a variable implies the variable address a data label identifies the location of a variable
+provide in a convenient way to reference the variable encode code for instance.
+
+#(Data Label)
+
+Example:-
+
+        COUNT DWORD 100 ; A variable named COUNT,DWORD variable type is double word(32-Bit),assigned it 100
+
+8.The assembler assigns a numeric address to each label.It is also posiible to define multiple data items following
+a single label.
+
+Example:-
+
+        amount DWORD 1024, 2048
+               DWORD 4096, 8192 
+        ;Label amount defines the location for first number which is 1024, the other numbers follow in memory immediately
+        afterwards consecutively.
+
+#(CODE LABEL)
+
+9.A label in the code area of the program where instructions are located must end with a call on.
+
+10.Code labels are used as targets of jumping and looping instructions for example the following jump instruction transfers
+control to the location marked by the label named start.
+
+Example:-
+
+        start:
+            MOV AX,BX
+            ...
+            JMP start
+
+11.Code label can share the same line with instruction
+
+Example:-
+
+        start: MOV AX,BX
+
+##(Mnemonic)
+
+1.Identifies an instruction, these short word tells us what the instruction do.
+
+Example:-
+
+S.No        Mnemonic                    Instruction
+
+1.          MOV                         Move (assign) one value to another
+
+2.          ADD                         Add two values
+
+3.          SUB                         Subtract one value from another
+
+4.          MUL                         Multiply two values
+
+5.          JMP                         Jump to a new location
+
+6.          CALL                        Call a procedure
+
+
+#(Operand)
+
+7.In arithmetic an operand is a quantity on which an operation can be done.
+
+8.The meaning is same in assembly programming operations could be constants such as the number 20.
+
+Example:-
+
+S.No    Operator            Name
+
+1.      20                  Constant
+
+2.      35-7                Constant Expression
+
+3.      EAX                 Register
+
+4.      COUNT               memory
+
+
+##(Comments)
+
+#(Single line comment)
+
+Example:-
+
+```asm
+;Assembly programming is awesome
+```
+
+#(Multi line comment) or (Block comment)
+
+Example:-
+
+```asm
+COMMENT !
+Assembly programming is awesome
+!
+
+;(or)
+
+COMMENT &
+Assembly programming is awesome
+```

@@ -1,0 +1,78 @@
+###(Dealing With Data)
+
+1.A data statement sets aside storage and memory for a variable with an optional name.
+
+SYNTAX:-
+
+        [name] directive initializer [, initializer]
+
+Example:-
+
+        COUNT DWORD 4432
+
+2. This creates a 32-Bit variable called Count in memory and initialize it to the number 44321 32-Bits because DWORD means
+double word.
+
+refer:->img/data-types.jpg
+refer:->img/legacy-data-directives.jpg
+
+##(BYTE 8-Bit)
+
+DB -> Byte directive
+
+#(Initialized Signed and Unsigned Bytes)
+
+Example:-
+S.No    statement             usage
+1.      char1 BYTE 'C'       ; Character constant
+2.      num2 BYTE 0          ; Smallest unsigned Byte
+3.      num3 BYTE 255        ; Largest unsigned Byte
+4.      num4 SBYTE -128      ; Smallest signed Byte
+5.      num5 SBYTE +128      ; Largest  signed Byte
+
+#(Unintialized  Bytes)
+
+Example:-
+S.No    statement             usage
+1.      num5 SBYTE ?          ; Unintialized variable
+
+##(List initializer)
+refer:->img/list.jpeg
+
+##(String)
+
+To define a string of Characters we simply enclose them in a single or double quotation marks the most common type of
+strings end with a null byte containing zero.This is called a null terminated string.
+
+Example:-
+
+```asm
+
+hello BYTE "Welcome back",0
+
+
+hello BYTE "Welcome back"
+      BYTE "Ready to get started"
+      BYTE "Enter your name",0          ;Note the last is end with zero
+
+##(WORD 16-Bit)
+
+DW -> WORD directive
+
+#(Initialized and Unintialized word)
+
+S.No    statement               usage
+1.      word1 WORD 65535        ; Largest unsigned value
+2.      word2 SWORD -32768      ; Smallest signed value
+3.      word3 WORD ?            ; Unintialized, unsigned
+
+##(DOUBLEWORD (32-Bit))
+
+DD -> Double word directive
+
+#(Initialized and Unintialized double word)
+
+S.No    statement                        usage
+1.      word1 DWORD 12345678h            ; usigned value
+2.      word2 SDWORD -214742222          ; signed value
+3.      word3 DWORD ?                    ; Unintialized, unsigned

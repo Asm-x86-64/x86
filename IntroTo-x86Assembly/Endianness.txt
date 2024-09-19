@@ -1,0 +1,53 @@
+###(Endianness)
+
+1.Endianness basically describe how data is stored and retrieved from memory.
+
+2.x86 Processors and retrieve data from memory using 'Little Endianness'.
+
+##(Little Endianness)
+
+1. This means that the least significant byte is stored at the first memory address allocated for the data.The remaining
+bytes are stored in the next consecutive memory positions.
+
+
+Example:-
+COUNT DWORD 1147483647d
+
+(1147483647)10 is equivalent to (01000100011001010011010111111111)2
+
+Take a example 32-Bit processor. 
+
+Byte Offset          Binary Value        Decimal Value
+                                        SIGNED | UNSIGNED
+0x00000000           11111111            (-1)     (255)   
+
+0x00000001           00110101            (53)      (53)
+
+0x00000002           01100101            (101)    (101)
+
+0x00000003           01000100            (68)      (68)
+
+
+
+##(Big Endianness)
+
+1.This means the most significant byte is stored at the first memory address allocated for the data.The remaining
+bytes are stored in the next consecutive memory positions.
+
+Example:-
+COUNT DWORD 1147483647d
+
+(1147483647)10 is equivalent to (01000100011001010011010111111111)2
+
+Take a example 32-Bit processor. 
+
+Byte Offset          Binary Value        Decimal Value
+                                        SIGNED | UNSIGNED
+0x00000000           01000100            (68)      (68)
+
+0x00000001           01100101            (101)    (101)
+
+0x00000002           00110101            (53)      (53)
+
+0x00000003           11111111            (-1)     (255)
+

@@ -1,0 +1,29 @@
+###(x86 Integers)
+
+1.Integer constant is made up of an optional lead in sign one or more digits and an optional suffix.
+
+        + or - digits radix
+
+2.Sign and radix are optional.
+
+3.Radix indicates the numbers base
+
+S.No    Radix Character            Radix Value
+
+1.      H                           Hexadecimal
+
+2.      r                           Encoded real
+
+3.      q/o                         Octal
+
+4.      t                           Decimal
+
+5.      y/b                         Binary
+
+Example:-
+
+1.26d -> d indicates 26 is Decimal(Base 10).
+
+2.1001110b -> b indicates 1001110 is Binary(Base 2).
+
+4.Integer expressions are only be evaluted at assembly time.(Before Execution)
