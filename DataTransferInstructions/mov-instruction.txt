@@ -1,0 +1,87 @@
+###(THE MOV INSTRUCTION)
+
+1.The <MOV> instruction copies data from a source operand to a destination operand.
+
+2.It is a data transfer instruction, its basic Format shows that first operand is the destination and the second
+operand is the source.
+
+MOV : Copies data from a source to destination.
+
+Syntax:-
+        MOV <destination>, <source>
+
+#(Copying Smaller Values To Larger Ones)
+
+Example:-
+    count : unsigned 16-Bit value
+
+1.The destination operand content change but the source operand is unchanged after the instruction is executed although a MOV
+cannot directly copy data from a smaller operation to a larger one we programmers have ways that can do this.
+
+2.Suppose count is an unsigned sixteen bit of value and must be moved to ECX register.ECX is a 32-bit register.
+
+3.We can move the smaller value into a larger register by.
+
+Example:-
+    ```asm
+
+    .data
+    count WORD 1
+
+    .code
+    MOV ECX , 0
+    MOV CX , count
+
+    ```
+
+#(MOVZX (MOV WITH ZERO-EXTEND))
+
+1.MOVZX which means move with zero extend copies the content of a source operand into a destination operand and zero extends the 
+value to 16 or 32 Bit.
+
+2.This instruction is only used with unsigned integers.
+
+1.MOVZX       reg32 , reg/mem8
+2.MOVZX       reg32 , reg/mem16
+3.MOVZX       reg16 , reg/mem8
+
+
+Example:-
+
+    ZERO-extend binary 10001111b into AX:
+
+    MOVZX to copy a byte into a 16-bit destination.
+
+    ```asm
+
+    .data
+        byteVal BYTE 10001111b;
+    .code
+        MOVZX AX, byteVal ; AX = 0000 0000 1000 1111
+
+    ```
+
+#(MOVSX (MOV WITH SIGN-EXTEND))
+
+1.The content of a source operand into destination operand and dign expands the value to 16 or 32-Bits.
+
+2.This instruction is only used with signed integers like the move with 0 extend instruction.
+
+1.MOVSX        reg32 , reg/mem8
+2.MOVSX        reg32 , reg/mem16
+3.MOVSX        reg16 , reg/mem8
+
+Example:-
+
+    Sign-extend the binary 10001111b into AX:
+
+    MOVSX to copy a byte into a 16-bit destination.
+
+    ```asm
+
+    .data
+        byteVal BYTE 10001111b
+    .code
+        MOVSX AX,byteVal ; AX = 1111 1111 1000 1111
+
+    ```

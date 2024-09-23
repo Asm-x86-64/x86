@@ -1,0 +1,44 @@
+###(Data Transfer Instructions)
+
+x86 instructions needed to perform data transfer
+
+##(Operand Types)
+
+[lebel :] mnemonic [operands] [;comment]
+
+#(Instruction Format With Varying Number Of Operands)
+
+        1.mnemonic
+        2.mnemonic [destination]
+        3.mnemonic [destination] , [source]
+        4.mnemonic [destination] , [source 1] , [source 2]
+
+#(Types Of Instruction Operands)
+
+        1.Immediate :-> Uses numeric literal expression. 
+        2.Register  :-> Uses named register in the CPU.
+        3.Memory    :-> Uses memory location.
+
+#(Direct Memory Operand)
+
+Variable names are references to offset within the data segment.
+
+Example:- 
+
+.data
+num1 BYTE 13h
+
+1.This declaration over here indicates a byte containing the hexadecimal number 13 has been allocated in the data segment.
+
+2.Program code contains instructions that do you reference memory operations using data addresses.
+
+3.Suppose Number one were located at offset 10400h an assembly language instruction move in to the 'AL' register would
+look like this.
+
+    MOV AL, num1  -> A0 00010400
+
+4.The assembler would assemble this into the machine instruction the first byte in the machine instruction is the op code
+remaining part is the 32-Bit hexadecimal address of number1 although it might be possible to write programs using only
+numeric addresses symbolic names such as num1 make it easier to reference memory.
+
+refer:->img/instruction-operand-notation.jpg

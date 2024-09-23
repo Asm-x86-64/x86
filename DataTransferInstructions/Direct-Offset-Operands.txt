@@ -1,0 +1,26 @@
+###(Direct Offset Operands)
+
+1.We can add a displacement to the name of a Variable creating direct offset Operand.
+
+2.This let us access memory locations that may not have explicit labels.
+
+Example:-
+
+    ```asm
+
+    numArray BYTE 10h,20h,30h,40h,50h
+
+    MOV AL, numArray ; AL = 10h
+    
+    MOV AL, [numArray+1] ; AL = 20h
+
+    MOV AL, [numArray+2]; AL = 30h
+    
+    ```
+
+3.If we use MOV with numArray as the source operand we automatically move the first byte in the array, such that register
+AL contains just a number 10 at this stage.
+
+4.We can access the second byte in the array by adding 1 to the offset of numArray.
+
+5.The third byte can be accessed by adding 2 to the offset of numArray.

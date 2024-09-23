@@ -1,0 +1,21 @@
+###(Memory Addressing Modes)
+
+1.The x86 instruction set supports using upto seperate component to specify a memory operand default components include
+a fixed displacement value a base register an index register and a scale factor, subsequent to each instruction fetch
+that specifies a memory operand the processor calculates an effective address in order to determine the final memory
+address of the operand an effective address is calculated.
+
+Effective Adddress = Base Register + Index Register * Scale Factor + Displacement
+
+2.The base register can be any general purpose register.
+
+3.The index register also be any general purpose register except the stack pointer register (ESP).
+
+4.The displacement values are constant offset that are encoded within the instruction.
+
+5.The scale factor could be 1,2,4 or 8 the size of the final effective address is always 32-Bit.
+
+6.It is not necessary for an instruction to explicitly specify all of the components that the processor uses to calculate an
+effective address.
+
+refer:->img/memory-addressing-modes.jpg
