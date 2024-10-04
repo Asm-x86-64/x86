@@ -1,0 +1,42 @@
+###(Addition & Subtraction Instructions)
+
+##(ADD)
+
+Addition operand adds source operand to the destination operand.
+
+SYNTAX:-
+
+    ADD <DEST>,<SRC>
+
+EXAMPLE:-
+
+```asm
+
+    .data
+        var1 DWORD 10000H
+        var2 DWORD 20000H
+    .code
+        MOV EAX, var1   ;EAX = 10000H
+        ADD EAX, var2   ;EAX = 30000H
+
+```
+##(SUB)
+
+Subtraction instruction subtracts  source operand from a destination operand.
+
+SYNTAX:-
+
+    SUB <DEST>,<SRC>
+
+EXAMPLE:-
+
+```asm
+
+    .data
+        var1 DWORD 30000H
+        var2 DWORD 10000H
+    .code 
+        MOV EAX, var1   ;EAX = 30000H
+        SUB EAX, var2   ;EAX = 20000H
+
+```

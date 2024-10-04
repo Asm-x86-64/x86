@@ -1,0 +1,22 @@
+###(Increment & Decrement Instructions)
+
+Increment and decrement instructions add one and subtract one from a single operand.
+
+SYNTAX:-
+
+    INC (REGISTER / MEMORY)
+    DEC (REGISTER / MEMORY)
+
+EXAMPLE:-
+
+```asm
+
+    .data
+        myWord  WORD 1000H
+
+    .code
+        INC myWord
+        MOV BX, myWord
+        DEC BX
+        
+```

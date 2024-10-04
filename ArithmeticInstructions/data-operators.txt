@@ -1,0 +1,28 @@
+###(Data Operators)
+
+Operators and directives are not executable instructions, they are simply interpreted by the assembler.
+
+##(Operators)
+
+refer:->img/Operators.jpg
+
+1.OFFSET -> Returns offset of a data label
+    Meaning:- The distance in byte of the label from the beginning of the data segment.
+
+2.PTR   -> Override operand's default size. This is only neccesary when we are trying to access the variable using a
+           size attribute which is different from the one used to declared a variable.
+
+3.TYPE  -> Returns size of operand or array element size
+            The type operator returns to size in byte of a single element of a variable.
+
+4.LENGTHOF ->Returns number of elements in an array
+
+5.SIZEOF   ->Returns number of bytes used by array initializer. 
+
+##(Data Directives)
+
+refer:-> img/Directives.jpg
+
+1.LABEL -> Redefines same variable with different size attributes
+
+2.ALIGN -> Aligns a variable on a boundary.
