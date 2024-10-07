@@ -1,0 +1,24 @@
+###(Instruction Operands)
+
+refer:-> img/instruction-operands.jpg
+
+1.Most x86 32-Bit use operands which designates these specific value.That an instruction will act upon nearly all 
+instructions require one or more source operands along with a single destination operand.
+
+2.Most instructions also require the programmer to explicitly specify the source and destination operands.
+
+3.There are however a number of instructions where the operands are either implicitly specificed or forced by the instruction.
+
+4.There are three basic types of operands:-
+
+    1.Register operand
+    2.Immediate operand
+    3.Memory operand
+
+Register operands are contained in a general purpose registers.
+
+Immediate operand is a constant value encoded as part of the instruction.These are typically used to specify constant arithmetic
+,logical or offset value only source operands can be used as immediate operands.
+
+Memory operands specifies a location in memory which can contain any of the data types.An instruction can specify either the source
+or destination as memory operand but cannot use both source and destination at the same time as memory operand.

@@ -1,0 +1,52 @@
+###(Logic Instructions)
+
+##(AND Instruction)
+
+The AND instruction performs a bit wise and operation between each pair of matching bits in two operands and places
+the result into destination operand.
+
+SYNTAX:-        AND <DEST>,<SRC>
+
+There are different operand combinations we can use with these and instruction.
+
+REG -> Register
+MEM -> Memory address
+IMM -> Immediate value
+
+1.AND <REG>,<REG>
+2.AND <REG>,<MEM>
+3.AND <REG>,<IMM>
+4.AND <MEM>,<REG>
+5.AND <MEM>,<IMM> 
+
+##(OR Instruction)
+
+The OR instruction performs a bitwise or operation between each pair of matching bits in two operands and places
+the result in the destination operand.
+
+
+There are different operand combinations we can use with these and instruction.
+
+REG -> Register
+MEM -> Memory address
+IMM -> Immediate value
+
+1.OR <REG>,<REG>
+2.OR <REG>,<MEM>
+3.OR <REG>,<IMM>
+4.OR <MEM>,<REG>
+5.OR <MEM>,<IMM> 
+
+###(TEST Instruction)
+
+The TEST instruction in assembly language is a logical operation used primarily for performing bitwise AND operations without 
+storing the result. Instead of saving the result, it updates the status flags in the EFLAGS or RFLAGS register based on the outcome of the operation. This instruction is commonly used for checking specific bits in a register or memory location.
+
+ref:->chat reference in openai
+
+###(CMP Instruction)
+
+The CMP Instruction is used to compare integrs it's works by performing an implied subtraction of source operand from a
+destination operand.
+
+SYNTAX:-        CMP <DEST>,<SRC>

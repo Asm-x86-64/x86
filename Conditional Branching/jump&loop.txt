@@ -1,0 +1,37 @@
+###(Jump And Loop Instructions)
+
+##(Jump Instruction)
+
+The JMP or jump instruction causes an unconditional transfer to a destination identifier by a code label
+that is translated by the assembler into an offset.
+
+SYNTAX:-        JMP <DEST>
+
+When a CPU performs a unconditional transfer the offset of destination is moved into the instruction pointer register
+(IP) or (EIP) or (RIP) calls an execution to continue at the new location the JMP instruction provides an easy way to
+create loops.
+
+Example:-
+
+    ```asm
+
+        start:
+            <instruction-1>
+            <instruction-2>
+            <instruction-3>
+            JMP start ;This will create a simple loop
+    ```
+
+##(Loop Instruction)
+
+The loop instruction repeats a block of statement a specific number of times the (ECX) register is automatically used as 
+a counter and is decremented each time the loop repeats.
+
+SYNTAX:-        LOOP <DEST>
+
+The execution of the loop instruction involves two steps.
+
+1.It subtracts one from the ECX register. (SUB ECX,1)
+2.It compares (ECX) to zero.
+3.If (ECX) is not equal to zero a jump is taken to the label destination.
+4.otherwise if (ECX) equals to zero no jump takes place and control passes to the instruction following the loop. 

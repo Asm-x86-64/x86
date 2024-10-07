@@ -1,0 +1,41 @@
+###(Conditional Jump Instruction)
+
+A Conditional jump instruction branches to a destination label when a status flag condition is true.
+otherwise if the flag condition is false the instruction immediately following the conditional jump is executed.
+
+SYNTAX:-    JCOND <DEST>
+
+refer:-> img/jumps&flags.jpg
+refer:-> img/equality-comparisons.jpg
+
+Example:-
+
+#When compared value is zero
+
+```asm
+
+    CMP EAX,0
+    JZ level2 ; Jump if ZF(Zero Flag) = 1
+
+    .
+    .
+    .
+
+    level2:
+
+```
+
+#When compared value is not zero
+
+```asm
+
+    CMP EAX,0
+    JNZ level2 ; Jump if ZF(Zero Flag) = 0
+
+    .
+    .
+    .
+
+    level2:
+    
+```
