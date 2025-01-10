@@ -1,0 +1,155 @@
+The Floating point instructions can be grouped into six groups:-
+
+    1) Data Transfer Instructions
+    2) Basic Arithmetic Instructions
+    3) Data Comparison Instructions
+    4) Transcendental Instructions
+    5) Constants Representations
+    6) Control Instructions
+
+##  Data Transfer Instructions:-
+    
+    1)FLD -> Load Floating point value
+              Pushes a floating-point value onto the FPU stack. The source operand can be content in a FPU stack or a memory location.
+
+
+    2)FLID -> Load Integer
+              Converts the signed-integer source operand into double extended-precision floating-point format and pushes the value onto the FPU register stack.
+
+    3)FST -> Store Floating-Point value
+             Copies the value in the ST(0) register to the destination operand, which can be a memory location or another register in the FPU register stack.
+
+    4)FSTP -> Store Floating-Point Value and Pop
+              Performs the same functions as FST and also pops the stack.
+
+    5)FIST -> Store Integer
+              Converts the value in the ST(0) register to a signed integer and stores the result in the destination operand.
+
+    6)FISTP -> Store Integer and Pop
+               Performs the same functions as fist and also pops the stack.
+
+    7)FXCH  -> Exchange Register Content
+               Exchanges the contents of registers ST(0) and ST(i)
+
+    8)FCMOVCC -> Conditionally Copy Register Content
+                 Conditionally copies the contents of st(i) to st(0) if the specified condition is true.
+
+                 (Condition code)                   (Meaning)                   (Testing Condition)
+                     B                                  Below                       CF == 1
+                     NB                                 Not Below                   CF == 0
+                     E                                  Equal                       ZF == 1
+                     NE                                 Not Equal                   ZF == 0
+
+
+## Arithmetic Instructions:-
+    
+    1)FADD   ->  Floating-Point Add
+                 Adds the source and destination operands. The 
+                 source operand can be a memory location or an X87 FPU register.
+                 The destination operand must be a x87 FPU register.
+
+    2)FADDP  -> Floating-Point Add And Pop
+                Adds st(i) and st(0), saves sum to st(1) and pops the top of the stack, after st(1) shifts to st(0).
+
+    3)FIADD  -> Add Integer
+                Adds st(0) and the specified integer operand and saves the sum to st(0).
+
+    4)FSUB   -> Floating - Point Subtract
+                Subtracts the source operand from the destination operand and saves the result in the destination operand.
+                The source operand can be a memory location or an x87 FPU register. The destination operand must be an x87 FPU register.
+
+    5)FSUBP  -> Floating-Point Subtract And Pop
+                Subtracts st(0) from st(i), saves difference to st(1) and pops the top of the stack, after st(1) shifts to st(0).
+
+
+    6)FMUL   -> Floating-Point Multiply
+                Multiplies the source and destination operands and saves the product in the destination operand.
+                The saves the product in the destination operand. The source operand can be a memory location or an
+                x87 FPU registers. The destination operand must be an x87 FPU registers.
+
+    7)FMULP  -> Floating-Point Multiply And Pop
+                Multiplies st(i) and st(0), saves the product to st(1), and pops the stack, after st(1) shifts to st(0).
+
+    8)FDIV   -> Floating-Point Divide
+                Divides the destination operand (dividend) by the source operand (divisor). The source operand can be a memory location an FPU regoster.
+                The destination operand must be an x87 FPU register.
+
+    9)FDIVP  -> Floating-Point Divide And Pop
+                Divides st(i) and st(0), saves the quotient to st(0), and pops the stack, after  st(1) shifts to st(0).
+
+    10)FABS  -> Floating-Point Absolute Value
+                Calculates the absolute value of st(0) and saves the result to st(0).
+
+    11)FSQRT  -> Floating-Point Square Root
+                 Calculates the square root of st(0) and then saves the result to st(0).
+
+## Data Comparison Instructions:-
+
+    1)FCOM    -> Floating-Point Compare
+                Compares st(0) with st(i) or an operand in memory and sets the x87 FPU condition code flags based on the result.
+
+    2)FICOM   -> Floating-Point Integer Compare
+                 Comapres st(0) with a memory-based integer operand and sets the x87 FPU condition code flags based on the result.
+
+    3)FICOM   -> Floating-Point Integer Compare
+                 Compares st(0) with a memory-based integer operand and sets the x87 FPU condition code flags based on the result.
+
+    4)FTST    -> Floating-Point Value Test
+                 Compares st(0) with 0.0 and sets the x87 FPU condition code flags based on the result.
+
+## Transcendental Instructions:-
+
+    For Trignometric calculations:-
+
+    1)FSIN -> Floating-Point Sine
+              Calculates the sine of st(0) and saves the result to st(0).
+
+    2)FCOS -> Floating-Point Cosine
+              Calculates the cosine of st(0) and saves the result of st(0).
+
+    3)FSINCOS ->Floating-Point Sine & Cosine
+                Calculates the sin and cosine of st(0). Following execution of this instruction, st(0) and st(1) contain the 
+                cosine and sine, respectively, of the original operand.
+
+    4)FPTAN  -> Floating-Point Tangent
+                Computes the tangent of st(0), saves the result to st(0), and pushes the constant 1.0 onto the stack.
+
+## Constants Representations:-
+
+    1)FLD1   -> Floating-Point One
+                Pushes the constant +1.0 onto the x87 FPU register stack.
+
+    2)FLDZ   -> Floating-Point Zero
+                Pushes the constant +0.0 onto the x87 FPU stack.
+
+    3)FLDPI  -> Floating-Point PI
+                Pushes the constant pi onto the x87 FPu stack.
+
+    4)FLDL2E -> Floating-Point log2(e)
+                Pushes the constant value log2(e) onto the x87 FPU stack.
+
+    5)FLDLN2 -> Floating-Point ln(2)
+                Pushes the constant value ln(2) onto the x87 FPU stack.
+
+    6)FLDL2T -> Floating-Point log2(10)
+                Pushes the constant log2(10) onto the x87 FPU stack.
+
+    7)FLDLG2 -> Floating-Point log2(2)
+                Pushes the constant log2(2) onto the x87 FPU stack. 
+
+## Control Instructions:-
+
+    1)FINIT  -> FPU Initialize
+                Initializes the x87 FPU to its default state.
+
+    2)FINCSTP -> FPU Increment Stack Pointer Increments the x87 FPU stack pointer. The contents of the x87 FPU's data registers are not modified, 
+                 which means that this instruction is not equivalent to a stack pop. This instruction can be used to manually manage the x87 FPU register stack.  
+    
+    3)FDECSTP -> FPU Decrement Stack Pointer
+                 Decrements the x87 FPU stack pointer. The contents of the x87 FPU's data registers are not modified, which means that this instruction is not
+                 equivalent to a stack pop. This instruction can be used to manually manage the x87 FPU register stack.
+
+#### Call Convention for FPU - Unit
+
+    1) Call Covention Specifies that function must use st(0) to return floating-point values back to callers.
+    2) Parameters are pushed through general stack.
