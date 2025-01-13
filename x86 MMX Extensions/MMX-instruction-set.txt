@@ -41,7 +41,7 @@ Groups:-
                           Performs packed unsigned integer addition using the specified operands.
 
     
-    4) psubb,pusbw,psubd,psubq -> Packed Integer Subtraction
+    4) psubb,psubw,psubd,psubq -> Packed Integer Subtraction
                                   Performs a SIMD subtract of the packed integers of the source operand (second operand) from the packed integers of the destination operand (first operand), and stores the packed integer results in the destination operand.
 
     5) psubsb,psubsw -> Packed Signed Integer Subtraction
