@@ -1,0 +1,209 @@
+MMX Instruction Set
+
+Nature of MMX Instructions:-
+
+    1)Source operand can be a memory location or an MMX register.
+    2)Destination operand must be an MMX register.
+    3)MMX instructions do not update any of the EFLAGS.
+    4)Most MMX instructions use the letters b (byte), w (word), d (double word), and q(quad word) to denote the width of the elements that will be processed.
+
+Groups:-
+    1) Data Transfer Instructions
+    2) Basic Arithmetic Instructions
+    3) Data Comparison Instructions
+    4) Conversion Instructions
+    5) Logical And Shift Instructions
+    6) Insertion And Extraction Instructions
+    7) State And Cache Control Instructions
+
+
+#### Data Transfer Instructions
+
+    1) movd - Move Double word
+              Copies a double word from the source operand to the destination operand.
+
+    2) movq - Move Quadword
+              Copies a quadword from the source operand to the destination operand.
+
+
+
+#### Basic Arithmetic Instructions
+
+    1) paddb,paddw,paddd,paddq - Packed Integer Addition
+                                 Performs packed integer addition using the specified operands.
+
+    
+
+    2) paddsb,paddsw - Packed Signed Integer Addition   
+                        Performs packed signed integer addition using the specified operands.
+
+    3) paddusb,paddusw -> Packed Unsigned Integer Addition
+                          Performs packed unsigned integer addition using the specified operands.
+
+    
+    4) psubb,pusbw,psubd,psubq -> Packed Integer Subtraction
+                                  Performs a SIMD subtract of the packed integers of the source operand (second operand) from the packed integers of the destination operand (first operand), and stores the packed integer results in the destination operand.
+
+    5) psubsb,psubsw -> Packed Signed Integer Subtraction
+                        Performs a SIMD subtract of the packed signed intgers of the source operand (second operand) from the packed signed integers of the destination operand (first operand), and stores the packed integer results in the destination operand.
+
+    6) pmaddwd       ->  Multiply and Add Packed integers
+                        Multiplies the individual signed words of the destination operand (first operand) by the corresponding signed words of the source operand (second operand), producing temporary signed, doubleword results. The adjacent double-word result are then summed and stored in the destination operand.
+
+    refer:-> pmaddwd.jpg 
+
+    7) pmaddubsw : refer:-> pmaddubsw.jpg
+
+                    Similar to pmaddwd, but performs operation between signed and unsigned packed integers.
+
+#### Data Comparison Instructions:-
+
+    1)pcmpeqb,pcmpeqw,pcmpeqd - packed Integer Compare
+                                Compares two packed inetger operands element-by-element for equality. If the source and destination data elements are equal, the corresponding data element in the destination operand is set to all ones; otherwise, the destination operand element is set to all zeros.
+
+    2) pcmpgtb,pcmpgtw,pcmpgtd - Packed Signed Integer Compare
+                                Compares two packed signed-integer operands element-by-element for magnitude. If the destination operand data element is larger, the corresponding data element in the destination operand is set to all ones; otherwise, the destination operand data elements is set to all zeros. 
+
+
+
+#### Instructions used in course
+
+    1)MOVD:
+        The MOVD (Move Doubleword) instruction is part of the MMX instruction set, and it allows data transfer between MMX registers and general-purpose registers or memory. Its behavior depends on the operands:
+
+        CASE1: MOVD reg32, mmx
+
+        Moves the low 32 bits of the MMX register into a general-purpose register (like EAX).
+        In your example, MOVD EAX, MM0 does exactly this: it moves the low 32 bits from MM0 into EAX.
+
+        CASE2: MOVD mmx, reg32/mem32
+
+        Moves a 32-bit value from a general-purpose register or memory into the MMX register.
+        Example: MOVD MM0, EAX would load the low 32 bits of EAX into MM0.
+
+
+    2)PSHUFW:
+
+        ### Deep Dive into `PSHUFW MM2, MM0, 01001110b`:
+
+        Purpose of `PSHUFW`:**
+        `PSHUFW` is used to shuffle the **16-bit words** in the source operand into a new order in the destination operand. In this case, it takes `MM0`'s contents and rearranges them into `MM2` based on the control mask.
+
+
+
+        Source Register (MM0):
+        ```
+        MM0:   word-3   word-2   word-1   word-0
+                ^         ^         ^         ^
+            (W3)      (W2)      (W1)      (W0)
+        ```
+        Each **16-bit word** is labeled as `W3`, `W2`, `W1`, and `W0`.
+
+
+
+        Control Mask (01001110b):
+
+        Each pair of bits in the control mask selects which word from the source register will occupy the corresponding position in the destination.
+
+        - Bits 7-6 (`01`): Copy W1 → `word-3` in `MM2`.
+        - Bits 5-4 (`00`): Copy W0 → `word-2` in `MM2`.
+        - Bits 3-2 (`11`): Copy W3 → `word-1` in `MM2`.
+        - Bits 1-0 (`10`): Copy W2 → `word-0` in `MM2`.
+
+
+
+        Rearranging Words:
+
+        Using the control mask, the words in `MM0` are shuffled into `MM2` as follows:
+
+        | **Destination Word** | **Source Word (MM0)** |
+        |----------------------|-----------------------|
+        | `word-0`             | `W2`                  |
+        | `word-1`             | `W3`                  |
+        | `word-2`             | `W0`                  |
+        | `word-3`             | `W1`                  |
+
+
+
+        Final State of MM2:
+
+        ```
+        MM2:   word-1   word-0   word-3   word-2
+                ^         ^         ^         ^
+            (W1)      (W0)      (W3)      (W2)
+        ```
+
+
+
+       Interpreting Dwords (32-bit Sections):
+
+        The MMX registers are 64 bits wide, so they consist of two 32-bit dwords (`low dword` and `high dword`):
+
+        Initial MM0 (split into dwords):
+
+        ```
+        High Dword:   W3   W2
+        Low Dword:    W1   W0
+        ```
+
+        Shuffling Result in MM2 (split into dwords):
+
+        ```
+        High Dword:   W1   W0
+        Low Dword:    W3   W2
+        ```
+
+        Effectively, this instruction swaps the low and high dwords, rearranging the words within them. 
+
+    3)ALL SHIFT INSTRUCTIONS TABLE 
+
+        NOTE:- THERE IS NO, SIMD SHIFT INSTRUCTIONS FOR PACKED BYTE.
+
+
+        | **Instruction**  | **Behavior**                                      | **Vacated Bits**                |
+        |------------------|---------------------------------------------------|---------------------------------|
+        | **PSLLW**        | Logical left shift on packed 16-bit integers.     | Filled with 0.                  |
+        | **PSLLD**        | Logical left shift on packed 32-bit integers.     | Filled with 0.                  |
+        | **PSRLW**        | Logical right shift on packed 16-bit integers.    | Filled with 0.                  |
+        | **PSRLD**        | Logical right shift on packed 32-bit integers.    | Filled with 0.                  |
+        | **PSRAW**        | Arithmetic right shift on packed 16-bit integers. | Filled with the sign bit (MSB). |
+        | **PSRAD**        | Arithmetic right shift on packed 32-bit integers. | Filled with the sign bit (MSB). |
+
+
+    4) Multiplication instructions:-
+
+        ### **MMX Multiplication Instructions**
+
+        1. **PMULLW (Packed Multiply Low Word)**  
+        - Multiplies each pair of **16-bit integers** from two MMX registers.  
+        - Keeps only the **lower 16 bits** of the result.  
+        - **Use case**: When results are guaranteed to fit in 16 bits.
+
+
+        2. **PMULHW (Packed Multiply High Word)**  
+        - Multiplies each pair of **16-bit integers** from two MMX registers.  
+        - Keeps only the **upper 16 bits** of the result (useful for large numbers).  
+        - **Use case**: When results might exceed 16 bits and higher bits are needed.
+
+
+        3. **PMULHUW (Packed Multiply High Unsigned Word)**  
+        - Similar to `PMULHW`, but treats the values as **unsigned integers**.  
+        - **Use case**: When working with unsigned numbers to avoid negative values.
+
+
+        4. **PMADDWD (Packed Multiply and Add Word to Doubleword)**  
+        - Multiplies each pair of **16-bit integers** and adds the results of adjacent pairs to form **32-bit integers**.  
+        - **Use case**: Dot products and other vector calculations.
+
+
+        ### Summary Table for Easy Reference
+
+        | Instruction | Operands Size | Result Size | Signed/Unsigned  | Operation Performed          |
+        |-------------|---------------|-------------|------------------|------------------------------|
+        | PMULLW      | 16-bit        | 16-bit      | Signed           | Multiply, keep low 16 bits   |
+        | PMULHW      | 16-bit        | 16-bit      | Signed           | Multiply, keep high 16 bits  |
+        | PMULHUW     | 16-bit        | 16-bit      | Unsigned         | Multiply, keep high 16 bits  |
+        | PMADDWD     | 16-bit        | 32-bit      | Signed           | Multiply, add adjacent pairs |
+
+
+

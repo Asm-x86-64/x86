@@ -1,0 +1,144 @@
+#### MMX Multiplication Instructions:-
+
+a.u16[0] = 15000;
+a.u16[1] = 12000;
+a.u16[2] = 5000;
+a.u16[3] = 32768;
+
+b.u16[0] = 40000;
+b.u16[1] = 30000;
+b.u16[2] = 25000;
+b.u16[3] = 10000;
+
+
+-- After arguments get loaded
+
+MM0 = 800013882EE03A98
+MM1 = 271061A875309C40 
+
+8000 -> 32768 -> MSB load into MSB
+1388 ->  5000
+2EE0 ->  2EE0
+3A98 -> 15000 -> LSB load into LSB
+
+2710 -> 10000 ->MSB load into MSB
+61A8 -> 25000 
+7530 -> 30000
+9C40 -> 40000 ->LSB load into LSB
+
+--After PMULLW
+
+MM0 = 000059402A004600 
+
+(Packing)
+
+a.u16[0] = 15000;
+a.u16[1] = 12000;
+a.u16[2] = 5000;
+a.u16[3] = 32768;
+
+b.u16[0] = 40000;
+b.u16[1] = 30000;
+b.u16[2] = 25000;
+b.u16[3] = 10000;
+
+
+-- After arguments get loaded
+
+MM0 = 800013882EE03A98
+MM1 = 271061A875309C40 
+
+8000 -> 32768 -> MSB load into MSB
+1388 ->  5000
+2EE0 -> 12000
+3A98 -> 15000 -> LSB load into LSB
+
+2710 -> 10000 ->MSB load into MSB
+61A8 -> 25000 
+7530 -> 30000
+9C40 -> 40000 ->LSB load into LSB
+
+--After PMULLW
+
+MM0 = 000059402A004600 
+
+0000  -> 0
+5940  -> 22848
+2A00  -> 10752
+4600  -> 17920
+
+--After PMULHW
+MM1 = 13880773157523C3 
+
+1388  -> 5000
+0773  -> 1907
+1575  -> 5493
+23C3  -> 9155
+
+(Unpacking)
+
+--After PUNPCKLWD
+MM0 = 15752A0023C34600 
+
+1575  -> 5490
+2A00  -> 10752
+
+Unpacked into 15752A00 -> 360000000
+
+23C3   -> 9155
+4600   -> 17920
+
+Unpacked into 23C34600 -> 600000000
+
+--After PUNPCKHWD
+
+MM2 = 1388000007735940
+
+1388  -> 5000
+0000  ->  0
+
+Unpacked into 13880000 -> 327680000
+
+0773  -> 1907
+5940  -> 22848
+
+Unpacked into 07735940 -> 125000000
+
+Result:-
+
+Reuslt of MMXMulSignedWord
+a:   15000    12000     5000    32768
+b:   40000    30000    25000    10000
+Product_low:   600000000    360000000
+Product_high:   125000000    327680000
+
+
+#### Order of unpacking
+
+Dest: word-3  word-2  word-1  word-0
+Src: word-3  word-2  word-1  word-0
+
+order for unpacking is source operand word-1 first and destination operand word-1 second (Higher 32-bits) and source operand word-0 first and destination operand word-1 second (lower-32bits)
+
+After PUNPCKLWD:-
+
+Dest:- word-1[src] word-1[Dest]  word-0[src] word-0[Dest]
+
+
+So always the order should follow this syntax:-
+
+PUNPCKLWD  <destination_operand> <source_operand>
+PUNPCKHWD  <destination_operand> <source_operand>
+
+
+destination_operand -> Should be the (lower-16-Bits) calculated from PMULLW Instruction, to get the correct result.
+source_operand -> Should be the (Higher-16-Bits) calculated from PMULHW Instruction, to get the correct result.
+
+
+So the, above syntax can be written as for easier understanding:-
+
+PUNPCKLWD  <MMX_register_had_result_of_PMULLW> <MMX_register_had_result_of_PMULHW>
+PUNPCKHWD  <MMX_register_had_result_of_PMULLW> <MMX_register_had_result_of_PMULHW>
+
+
+

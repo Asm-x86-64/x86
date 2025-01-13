@@ -1,0 +1,143 @@
+MMX -> Multi Media eXtension
+
+1) For SIMD Processing
+2) Pentium processors were first to have them.
+3) For advanced multimedia and communication applications.
+4) 8 ->  64-bit registers
+5) Supports Saturated Integer Arithmetic.
+
+Saturated Arithmetic VS Wrap Around Arithmetic :-
+
+    1) In saturated arithmetic the result of a computation are automatically clipped by the processor to prevent overflow or underflow. 
+
+SIMD  -> Single Instruction Multiple Data.
+
+SIMD (Single Instruction, Multiple Data) allows **one instruction** to operate on **multiple pieces of data** simultaneously.
+
+1)MMX registers can store **different packed integer types** (e.g., 8-bit, 16-bit, or 32-bit integers) and handle them in a single instruction. However, all elements in the register must be of the **same type** (e.g., all 8-bit or all 16-bit integers) for an instruction to process them.
+
+2)MMX registers **cannot handle mixed data types** like 1 DWORD and 2 WORDs simultaneously. They work with **uniform data types**: 8 bytes, 4 words, or 2 double words, all of the **same type** in a packed format.
+
+refer:- img/SIMD-in-MMX.jpg
+
+
+
+### **What are MMX Instructions?**
+MMX (MultiMedia eXtensions) is an instruction set introduced by Intel in 1996 with the Pentium processors. It is specifically designed for **multimedia processing**, such as image, audio, and video data. MMX provides a set of instructions that operate on **packed data** (multiple smaller data elements packed into a single 64-bit register).
+
+
+### **Features of MMX:**
+1. **Packed Data:** Operates on multiple small integers (bytes, words, or double words) in a single 64-bit MMX register.
+   - Example: A 64-bit MMX register can hold 8 bytes, 4 words, or 2 double words simultaneously.
+   
+2. **Performance Boost:** Improves performance in multimedia applications by enabling **SIMD (Single Instruction, Multiple Data)** operations, where one instruction processes multiple data elements at once.
+
+3. **Registers:** Uses 8 special registers (`MM0` to `MM7`), which overlap with the floating-point stack registers, so MMX and floating-point operations cannot be used simultaneously.
+
+4. **Fixed-Point Arithmetic:** MMX focuses on integer arithmetic rather than floating-point operations.
+
+
+### **How to Use MMX Instructions:**
+
+1. **Data Loading and Storing:**
+   - `MOVD`: Move a 32-bit value to/from an MMX register.
+   - `MOVQ`: Move a 64-bit value to/from an MMX register.
+
+2. **Arithmetic Operations:**
+   - `PADDB`: Packed add for bytes.
+   - `PADDW`: Packed add for words.
+   - `PADDQ`: Packed add for quad words.
+   - `PMULHW`: Packed multiply high (produces high half of the result).
+
+3. **Logical Operations:**
+   - `PAND`: Bitwise AND.
+   - `POR`: Bitwise OR.
+   - `PXOR`: Bitwise XOR.
+
+4. **Shift Operations:**
+   - `PSLLW`: Packed shift left for words.
+   - `PSRLQ`: Packed shift right for quad words.
+   - `PSRAW`: Packed arithmetic shift right for words.
+
+5. **Comparison Instructions:**
+   - `PCMPEQB`: Compare packed bytes for equality.
+   - `PCMPGTW`: Compare packed words for greater than.
+
+6. **Unpacking and Packing:**
+   - `PACKSSWB`: Pack words to bytes with signed saturation.
+   - `PUNPCKHBW`: Unpack high bytes to words.
+
+
+### **Where to Use MMX Instructions:**
+
+1. **Image Processing:**
+   - Operations like brightness adjustment, filtering, blending, or resizing can be accelerated using MMX.
+   - Example: Adding or averaging pixel values for effects.
+
+2. **Audio Processing:**
+   - Fast manipulation of audio samples, such as mixing, compression, or equalization.
+
+3. **Video Processing:**
+   - Used in encoding and decoding video streams, motion estimation, and applying transformations like DCT (Discrete Cosine Transform).
+
+4. **Signal Processing:**
+   - Applications involving FFT (Fast Fourier Transform), convolution, and other mathematical operations.
+
+
+### **Limitations of MMX:**
+1. **No Floating-Point Support:** MMX only works with integers.
+2. **Registers Overlap:** MMX registers overlap with floating-point registers, so switching between MMX and floating-point operations incurs a performance penalty.
+3. **Deprecated:** MMX has been largely replaced by more advanced instruction sets like **SSE (Streaming SIMD Extensions)** and **AVX (Advanced Vector Extensions)**.
+
+
+
+### **MMX Registers and FPU Relationship**
+- The **MMX registers** (`MM0` to `MM7`) are indeed **mapped to the lower 64 bits** of the **FPU stack registers** (`ST(0)` to `ST(7)`), which are 80-bit registers in the x87 Floating Point Unit (FPU).
+- This means that **MMX shares the physical hardware** with the FPU. When MMX instructions are used, the upper 16 bits of the FPU registers are essentially ignored.
+
+
+
+### **MMX and Integer Operations**
+- **MMX registers operate only on integers.** This is one of the defining characteristics of the MMX instruction set.
+- MMX was designed for **integer-based multimedia processing**, where operations like pixel manipulation, audio sample adjustments, and video processing rely on integer arithmetic.
+
+
+
+### **Key Differences: FPU vs. MMX**
+
+| **Feature**                | **FPU (x87)**                           | **MMX**                               |
+|----------------------------|-----------------------------------------|---------------------------------------|
+| **Data Type**              | Floating-point (32-bit, 64-bit, 80-bit) | Integer (8-bit, 16-bit, 32-bit)       |
+| **Precision**              | High (80-bit extended precision)        | Limited to integer precision          |
+| **Registers**              | `ST(0)` to `ST(7)` (80-bit)             | `MM0` to `MM7` (64-bit)               |
+| **Operation**              | Floating-point calculations             | Integer SIMD operations               |
+| **Overlap**                | Overlaps with MMX registers             | Overlaps with FPU registers           |
+
+
+
+### **EMMS Instruction**
+- Since the MMX registers share hardware with the FPU, the **EMMS (Empty MMX State)** instruction must be used to reset the FPU/MMX state after MMX operations.
+- Without executing `EMMS`, the FPU remains in an inconsistent state, which can cause issues if you attempt to perform floating-point operations after using MMX.
+
+
+
+### **Why Does MMX Only Operate on Integers?**
+1. **Design Purpose:**
+   - MMX was introduced to accelerate **multimedia processing**, which primarily involves integer data like pixel values (0–255), audio samples, and encoded video streams.
+
+2. **Hardware Limitations:**
+   - The MMX registers only store **64-bit packed integers**, so there’s no support for floating-point representations (e.g., IEEE-754 format).
+   - Floating-point SIMD was later introduced with **SSE (Streaming SIMD Extensions)**.
+
+
+
+### **Transition to Floating-Point SIMD**
+- For operations requiring floating-point data (e.g., scientific computations, 3D graphics), the industry moved to **SSE**, which added dedicated SIMD floating-point registers (`XMM` registers) and instructions without overlapping with the FPU.
+
+
+### **Summary**
+1. **MMX registers are mapped to the lower 64 bits of the x87 FPU stack registers (`ST(0)` to `ST(7)`).**
+2. **MMX instructions operate exclusively on integer data types**, making them unsuitable for floating-point operations.
+3. You need to use the `EMMS` instruction to clean up the MMX state before switching back to floating-point operations.
+
+ 
