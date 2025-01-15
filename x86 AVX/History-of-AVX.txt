@@ -1,0 +1,19 @@
+The first extension was introduced in 2011 with the Sandy Bridge Micro Architecture.
+
+AVX extends the packed single precision and double precision floating point capabilities of the SSE from 128-Bit to 256-Bit.
+
+It also supports a new three operand instruction syntax using non -destructive source operand that simplifies assembly language programming considerably.
+
+Programmers can use this new instruction syntax with packed 128-Bit integer, packed 128-Bit floating point and packed 256-Bit floating point operations.
+
+The new instruction syntax can also be used to perform scalar single precision and double precision floating point arithmetic.
+
+In 2012 Intel introduced an updated version of the sandy bridge micro architecture called the Avery bridge. which added instructions that performs half precision floating point conversions.
+
+In 2013 Intel launched a new micro architecture called the Haswell processor was based on this micro architecture include AVX-2, which extends the packed integer capabilities of AVX from 128-Bit to 256-Bit.
+
+It also includes enhanced data broadcast blend and commute instructions and introduces a new vector, index addressing mode that facilitates memory loads of data elements from non contagious locations.
+
+All Haswell based processors incorporates several AVX-2 associated technologies incuding FMA and has bits manipulation and flat less rotates and shift instructions.
+
+In July 2013 Intel announced AVX-512 which extends the same capabilities of AVX and AVX-2 from 256-Bit to 512-Bit.
