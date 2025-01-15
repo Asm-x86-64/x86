@@ -12,10 +12,10 @@ union XMMVal {
 	// Integer Data types
 
 	//Signed Members
-	Int8   i8[16];	// XMM register can hold 8 8-bit  values
-	Int16 i16[8];	// XMM register can hold 4 16-bit values
-	Int32 i32[4];	// XMM register can hold 2 32-bit values
-	Int64 i64[2];	// XMM register can hold 1 64-bit value
+	Int8   i8[16];	// XMM register can hold 16 8-bit  values
+	Int16 i16[8];	// XMM register can hold  8 16-bit values
+	Int32 i32[4];	// XMM register can hold  4 32-bit values
+	Int64 i64[2];	// XMM register can hold  2 64-bit value
 
 	//Usigned Members
 	Uint8   u8[16];
