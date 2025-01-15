@@ -1,0 +1,55 @@
+1)	PADDW  :- Packed Word Addition wrapAround
+		            
+    xmm0 -> w7   w6   w5   w4    w3   w2   w1  w0
+    xmm1 -> w7   w6   w5   w4    w3   w2   w1  w0
+
+    xmm0 -> w7   w6   w5   w4    w3   w2   w1  w0
+
+    w0 = w0 (xmm0) + w0 (xmm1)
+    w1 = w1 (xmm0) + w1 (xmm1)
+    w2 = w2 (xmm0) + w2 (xmm1)
+    w3 = w3 (xmm0) + w3 (xmm1)
+    w4 = w4 (xmm0) + w4 (xmm1)
+    w5 = w5 (xmm0) + w5 (xmm1)
+    w6 = w6 (xmm0) + w6 (xmm1)
+    w7 = w7 (xmm0) + w7 (xmm1)
+
+2) PADDSW :- Packed Word Addition saturated 
+
+    xmm0 -> w7   w6   w5   w4    w3   w2   w1  w0
+    xmm1 -> w7   w6   w5   w4    w3   w2   w1  w0
+
+    xmm0 -> w7   w6   w5   w4    w3   w2   w1  w0
+
+
+   (xmm0) w0 = w0 (xmm0) + w0 (xmm1)
+   (xmm0) w1 = w1 (xmm0) + w1 (xmm1)
+   (xmm0) w2 = w2 (xmm0) + w2 (xmm1)
+   (xmm0) w3 = w3 (xmm0) + w3 (xmm1)
+   (xmm0) w4 = w4 (xmm0) + w4 (xmm1)
+   (xmm0) w5 = w5 (xmm0) + w5 (xmm1)
+   (xmm0) w6 = w6 (xmm0) + w6 (xmm1)
+   (xmm0) w7 = w7 (xmm0) + w7 (xmm1)
+
+3) PSUBD :- Packed Double word subtraction (Wrap Around)
+
+    xmm0 :- d3  d2  d1  d0
+    xmm1 :- d3  d2  d1  d0
+
+    xmm1 :- d3  d2  d1  d0
+
+    (xmm0) d3 = d3 (xmm0) - d3 (xmm1)
+    (xmm0) d2 = d2 (xmm0) - d2 (xmm1)
+    (xmm0) d1 = d1 (xmm0) - d1 (xmm1)
+    (xmm0) d0 = d0 (xmm0) - d0 (xmm1)
+
+
+4) PMULDQ :- MUltiplies double words and store the result as qword in destination register.
+
+    XMM1 :-  d3  d2  d1  d0
+    XMM2 :-  d3  d2  d1  d0
+
+    xmm1 :- q1   q0
+
+   (xmm1) q0 = (xmm1) d0 * (xmm2) d0
+   (xmm1) q1 = (xmm1) d2 * (xmm2) d2

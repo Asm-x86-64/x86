@@ -1,0 +1,75 @@
+The definitions of `AbsMaskFloat` and `AbsMaskDouble` are **bitmasks** used to compute the **absolute value** of floating-point numbers in SSE. Let’s break them down:
+
+
+### **1. Understanding `AbsMaskFloat`**
+```assembly
+AbsMaskFloat DWORD 7FFFFFFFH,0FFFFFFFFH,0FFFFFFFFH,0FFFFFFFFH
+```
+
+- `AbsMaskFloat` is a constant mask defined as four `DWORD` (32-bit) values.
+  - `DWORD` stands for "double word," which is 4 bytes or 32 bits.
+  - The first value is `7FFFFFFFH`, while the rest are `0FFFFFFFFH`.
+
+#### **Purpose**
+- This mask is applied to 32-bit **single-precision floats** to compute their **absolute value**.
+- In IEEE 754 format, the **most significant bit (MSB)** is the **sign bit**:
+  - `0` indicates a positive number.
+  - `1` indicates a negative number.
+- By setting the sign bit to `0` (using a bitwise AND operation with the mask), the number is converted to its absolute value.
+
+#### **Binary Representation of the Mask**
+```plaintext
+7FFFFFFFH = 0111 1111 1111 1111 1111 1111 1111 1111
+0FFFFFFFFH = 1111 1111 1111 1111 1111 1111 1111 1111
+```
+- When ANDed with a 32-bit float:
+  - The **sign bit** (MSB) is cleared (set to 0).
+  - All other bits remain unchanged.
+
+#### **Example**
+```assembly
+ANDPS XMM1, REAL4 PTR[AbsMaskFloat] ; XMM1 = FABS(XMM1)
+```
+- `ANDPS` performs a bitwise AND between each float in `XMM1` and the corresponding 32-bit part of `AbsMaskFloat`.
+- The result is the **absolute value** of the floats in `XMM1`.
+
+
+### **2. Understanding `AbsMaskDouble`**
+```assembly
+AbsMaskDouble QWORD 7FFFFFFFFFFFFFFFH , 0FFFFFFFFFFFFFFFH
+```
+
+- `AbsMaskDouble` is a constant mask defined as two `QWORD` (64-bit) values.
+  - `QWORD` stands for "quad word," which is 8 bytes or 64 bits.
+  - The first value is `7FFFFFFFFFFFFFFFH`, while the second is `0FFFFFFFFFFFFFFFH`.
+
+#### **Purpose**
+- This mask is used for 64-bit **double-precision floats** to compute their **absolute value**.
+- Similar to single-precision floats, the MSB in a double-precision float is the sign bit.
+
+#### **Binary Representation of the Mask**
+```plaintext
+7FFFFFFFFFFFFFFFH = 0111 1111 1111 1111 1111 1111 1111 1111 ...
+0FFFFFFFFFFFFFFFH = 1111 1111 1111 1111 1111 1111 1111 1111 ...
+```
+- When ANDed with a 64-bit double:
+  - The **sign bit** (MSB) is cleared.
+  - All other bits remain unchanged.
+
+#### **Example**
+```assembly
+ANDPD XMM1, REAL8 PTR[AbsMaskDouble] ; XMM1 = FABS(XMM1)
+```
+- `ANDPD` performs a bitwise AND between each double in `XMM1` and the corresponding 64-bit part of `AbsMaskDouble`.
+- The result is the **absolute value** of the doubles in `XMM1`.
+
+
+### **Why Use These Masks?**
+- SSE does not have a direct instruction for calculating the absolute value of floating-point numbers.
+- By using these masks with bitwise AND operations, you can efficiently compute the absolute value of floats or doubles in SIMD registers.
+
+
+### **Summary**
+- **`AbsMaskFloat`**: Used for single-precision (32-bit) floating-point numbers.
+- **`AbsMaskDouble`**: Used for double-precision (64-bit) floating-point numbers.
+- Both masks clear the sign bit of the floating-point numbers to compute their absolute values using bitwise AND operations.
